@@ -1,0 +1,74 @@
+/* styles.css — responsive simple design */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#06b6d4;
+  --muted:#94a3b8;
+  --white:#eef2ff;
+  --danger:#ef4444;
+}
+*{box-sizing:border-box}
+html,body,#board{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#061021 0%,#071229 100%);
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:16px;
+}
+.app{
+  max-width:980px;
+  margin:0 auto;
+  display:grid;
+  gap:16px;
+}
+header{display:flex;flex-direction:column;gap:6px}
+.sub{color:var(--muted);margin:0;font-size:0.95rem}
+.controls{background:rgba(255,255,255,0.03);padding:12px;border-radius:10px;display:flex;flex-direction:column;gap:8px}
+.controls label{display:block;margin-bottom:6px}
+.controls input, .controls select{padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+button{background:var(--accent);border:0;padding:8px 12px;border-radius:8px;color:#042028;font-weight:600;cursor:pointer}
+button.secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.06)}
+.invite{margin-top:8px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
+.hidden{display:none}
+
+.game-area{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start}
+.info{min-width:220px;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px}
+.players{margin-top:8px;color:var(--muted)}
+.timers{display:flex;gap:8px;margin-top:8px;color:var(--muted)}
+
+.board{
+  display:grid;
+  grid-template-columns:repeat(3,120px);
+  grid-template-rows:repeat(3,120px);
+  gap:10px;
+  padding:10px;
+  border-radius:12px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+}
+.cell{
+  background:rgba(255,255,255,0.02);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:48px;
+  cursor:pointer;
+  user-select:none;
+  transition:transform .12s ease;
+}
+.cell:hover{transform:scale(1.03)}
+.cell.disabled{cursor:not-allowed;opacity:0.6}
+
+.actions{display:flex;gap:8px;margin-top:8px}
+footer{color:var(--muted);margin-top:8px;font-size:0.85rem}
+
+/* responsive */
+@media (max-width:700px){
+  .board{grid-template-columns:repeat(3,90px);grid-template-rows:repeat(3,90px)}
+  .info{min-width:unset;width:100%}
+  .game-area{flex-direction:column}
+}

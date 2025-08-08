@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Morpion — Multiplayer Firebase (CDN)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>Morpion — Multijoueur (Firebase CDN)</h1>
+      <p class="sub">Matchmaking, invitation par lien, IA (Minimax), parties chronométrées — prêt à déployer via Firebase Console.</p>
+    </header>
+
+    <section class="controls">
+      <label>Ton pseudo: <input id="nickname" placeholder="Ex: Alice" /></label>
+
+      <div class="row">
+        <select id="modeSelect" title="Mode">
+          <option value="multiplayer">Multijoueur (en ligne)</option>
+          <option value="ai">Solo vs IA</option>
+        </select>
+
+        <select id="aiLevel" title="Niveau IA">
+          <option value="easy">IA — Facile</option>
+          <option value="medium">IA — Moyenne</option>
+          <option value="hard" selected>IA — Difficile (Minimax)</option>
+        </select>
+
+        <select id="timedSelect" title="Match chronométré">
+          <option value="0">Pas de chrono</option>
+          <option value="60">Partie 1 min / joueur</option>
+          <option value="120">Partie 2 min / joueur</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <button id="quickMatchBtn">Quick Match</button>
+        <button id="createInviteBtn">Créer invitation (lien)</button>
+        <input id="joinInput" placeholder="Coller l'ID de partie / lien" />
+        <button id="joinBtn">Rejoindre</button>
+      </div>
+
+      <div id="inviteBox" class="invite hidden">
+        <p>Lien d'invitation (copier & partager):</p>
+        <input id="inviteLink" readonly />
+        <button id="copyInvite">Copier</button>
+      </div>
+    </section>
+
+    <section class="game-area">
+      <div class="info">
+        <div id="status">Statut: hors-ligne</div>
+        <div id="timers" class="timers">
+          <div>X: <span id="timerX">--:--</span></div>
+          <div>O: <span id="timerO">--:--</span></div>
+        </div>
+        <div id="players" class="players">Joueurs: —</div>
+      </div>
+
+      <div id="board" class="board" role="grid" aria-label="Plateau du morpion">
+        <!-- 9 cases -->
+      </div>
+
+      <div class="actions">
+        <button id="restartBtn">Recommencer</button>
+        <button id="leaveBtn">Quitter</button>
+      </div>
+    </section>
+
+    <footer>
+      <small>Fichiers: index.html, styles.css, app.js — Documentation & déploiement inclus.</small>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
